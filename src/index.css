@@ -509,3 +509,13 @@ a {
     font-size: 42px;
   }
 }
+
+@media (max-width: 768px) {
+  .home {
+    min-height: 100dvh;
+
+    background-size: 145%;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+}
