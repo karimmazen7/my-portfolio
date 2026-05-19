@@ -514,8 +514,9 @@ a {
   .home {
     min-height: 100dvh;
 
-    background-size: 145%;
+    background-size: contain;
     background-position: center center;
     background-repeat: no-repeat;
+    background-color: #07111f;
   }
 }
