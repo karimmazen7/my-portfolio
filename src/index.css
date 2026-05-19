@@ -512,11 +512,12 @@ a {
 
 @media (max-width: 768px) {
   .home {
-    min-height: 100dvh;
+    min-height: 100vh;
 
-    background-size: contain;
-    background-position: center center;
+    background-size: 135%;
+
+    background-position: center top;
+
     background-repeat: no-repeat;
-    background-color: #07111f;
   }
 }
