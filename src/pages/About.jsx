@@ -75,6 +75,29 @@ const technologies = [
 
 const recentProjects = ["P1 Motors", "Mafak", "LevelUp", "Shark Fit"];
 
+function ArrowUpRight({ className = "" }) {
+  return (
+    <svg
+      className={className}
+      width="14"
+      height="14"
+      viewBox="0 0 14 14"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path
+        d="M3 11L11 3M5 3H11V9"
+        stroke="currentColor"
+        strokeWidth="1.25"
+        strokeLinecap="square"
+        strokeLinejoin="miter"
+      />
+    </svg>
+  );
+}
+
 function SectionLabel({ children, id }) {
   return (
     <p className="about-section-label" id={id}>
@@ -104,7 +127,6 @@ export default function About() {
 
             <div className="about-availability">
               <span aria-hidden="true" />
-
               <p>Available for freelance projects and opportunities</p>
             </div>
           </div>
@@ -220,10 +242,7 @@ export default function About() {
 
             <Link className="about-text-link" to="/work">
               <span>View all case studies</span>
-
-              <span className="about-link-arrow" aria-hidden="true">
-                ↗
-              </span>
+              <ArrowUpRight className="about-link-arrow" />
             </Link>
           </div>
         </section>
@@ -238,7 +257,6 @@ export default function About() {
             <div className="education-main">
               <div>
                 <h2>Bachelor of Science in Computer Science</h2>
-
                 <p>Ahram Canadian University</p>
               </div>
 
@@ -270,10 +288,7 @@ export default function About() {
 
           <Link className="about-cta-button" to="/contact">
             <span>Let’s work together</span>
-
-            <span className="about-link-arrow" aria-hidden="true">
-              ↗
-            </span>
+            <ArrowUpRight className="about-link-arrow" />
           </Link>
         </section>
       </div>
