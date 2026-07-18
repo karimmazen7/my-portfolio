@@ -58,7 +58,28 @@ const projects = [
   },
 ];
 
-const archiveProjects = [];
+function ArrowUpRight({ className = "" }) {
+  return (
+    <svg
+      className={className}
+      width="14"
+      height="14"
+      viewBox="0 0 14 14"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path
+        d="M3 11L11 3M5 3H11V9"
+        stroke="currentColor"
+        strokeWidth="1.25"
+        strokeLinecap="square"
+        strokeLinejoin="miter"
+      />
+    </svg>
+  );
+}
 
 function ProjectVisual({ project }) {
   const [imageUnavailable, setImageUnavailable] = useState(false);
@@ -100,7 +121,8 @@ function ProjectVisual({ project }) {
       {content}
 
       <span className="project-visual-action" aria-hidden="true">
-        View project <span>↗</span>
+        <span>View project</span>
+        <ArrowUpRight />
       </span>
     </a>
   );
@@ -140,11 +162,11 @@ function ProjectShowcase({ project, index }) {
             href={project.demo}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label={`View ${project.title} live demo`}
           >
             <span>View live demo</span>
-            <span className="project-link-arrow" aria-hidden="true">
-              ↗
-            </span>
+
+            <ArrowUpRight className="project-link-arrow" />
           </a>
         ) : (
           <span className="project-demo-link project-demo-disabled">
@@ -158,52 +180,11 @@ function ProjectShowcase({ project, index }) {
   );
 }
 
-function ArchiveCard({ project }) {
-  return (
-    <article className="archive-card">
-      {project.demo ? (
-        <a
-          className="archive-image"
-          href={project.demo}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={`View ${project.title}`}
-        >
-          <img
-            src={project.image}
-            alt={project.imageAlt}
-            loading="lazy"
-            draggable="false"
-          />
-        </a>
-      ) : (
-        <div className="archive-image">
-          <img
-            src={project.image}
-            alt={project.imageAlt}
-            loading="lazy"
-            draggable="false"
-          />
-        </div>
-      )}
-
-      <div className="archive-card-meta">
-        <span>{project.category}</span>
-        <span>{project.id}</span>
-      </div>
-
-      <h3>{project.title}</h3>
-    </article>
-  );
-}
-
 export default function Work() {
   return (
     <main className="work-page">
       <div className="work-container">
-        <header className="work-header">
-          {/* <p className="work-eyebrow">01 — Selected Work</p> */}
-        </header>
+        <header className="work-header" />
 
         <section
           className="selected-projects"
@@ -213,27 +194,6 @@ export default function Work() {
             <ProjectShowcase key={project.id} project={project} index={index} />
           ))}
         </section>
-
-        {/* <section className="work-archive" aria-labelledby="archive-heading">
-          <div className="archive-heading-row">
-            <div>
-              <p className="archive-label">Archive</p>
-              <h2 id="archive-heading">Ongoing &amp; Previous</h2>
-            </div>
-
-            <p className="archive-introduction">
-              A look into ongoing releases and selected previous work.
-            </p>
-          </div>
-
-          {archiveProjects.length > 0 && (
-            <div className="archive-grid">
-              {archiveProjects.map((project) => (
-                <ArchiveCard key={project.id} project={project} />
-              ))}
-            </div>
-          )}
-        </section> */}
       </div>
     </main>
   );
