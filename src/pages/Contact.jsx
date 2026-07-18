@@ -34,16 +34,16 @@ export default function Contact() {
             <span>LinkedIn</span>
 
             <a
-              href="https://linkedin.com/in/karim-mazen-58a20b2a6"
+              href="https://www.linkedin.com/in/karim-mazen"
               target="_blank"
               rel="noreferrer"
             >
-              linkedin.com/in/karim-mazen-58a20b2a6
+              https://www.linkedin.com/in/karim-mazen
             </a>
           </div>
         </div>
 
-        <form className="contact-form">
+        {/* <form className="contact-form">
           <input type="text" placeholder="Your Name" />
 
           <input type="email" placeholder="Your Email" />
@@ -51,7 +51,7 @@ export default function Contact() {
           <textarea placeholder="Your Message"></textarea>
 
           <button type="submit">Send Message</button>
-        </form>
+        </form> */}
       </div>
     </section>
   );
