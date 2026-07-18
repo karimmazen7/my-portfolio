@@ -1,4 +1,3 @@
-import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import "./About.css";
 
@@ -8,14 +7,14 @@ const experiences = [
     role: "Software Engineer",
     company: "LevelUp",
     date: "May 2025 — Present",
-    location: "Cairo, Egypt",
+    location: "Riyadh, Saudi Arabia",
     description:
       "Developing modern web platforms and business systems using React.js, Node.js, MySQL, and Supabase, with a focus on responsive interfaces, scalable architecture, API integrations, and administration dashboards.",
   },
   {
     id: "02",
     role: "Technical Specialist",
-    company: "Shahid / MBC via Raya",
+    company: "Shahid / MBC",
     date: "Dec 2024 — May 2025",
     location: "Cairo, Egypt",
     description:
@@ -85,58 +84,10 @@ function SectionLabel({ children, id }) {
 }
 
 export default function About() {
-  const pageRef = useRef(null);
-
-  useEffect(() => {
-    const page = pageRef.current;
-
-    if (!page) {
-      return undefined;
-    }
-
-    const animatedElements = page.querySelectorAll("[data-about-reveal]");
-    const reduceMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-
-    if (reduceMotion || !("IntersectionObserver" in window)) {
-      animatedElements.forEach((element) => {
-        element.classList.add("about-reveal-visible");
-      });
-
-      return undefined;
-    }
-
-    const observer = new IntersectionObserver(
-      (entries, currentObserver) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) {
-            return;
-          }
-
-          entry.target.classList.add("about-reveal-visible");
-          currentObserver.unobserve(entry.target);
-        });
-      },
-      {
-        threshold: 0.12,
-        rootMargin: "0px 0px -50px",
-      },
-    );
-
-    animatedElements.forEach((element) => observer.observe(element));
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <main className="about-page" ref={pageRef}>
+    <main className="about-page">
       <div className="about-editorial-container">
-        <section
-          className="about-hero"
-          aria-labelledby="about-page-title"
-          data-about-reveal
-        >
+        <section className="about-hero" aria-labelledby="about-page-title">
           <div className="about-hero-identity">
             <SectionLabel>02 — About</SectionLabel>
 
@@ -153,6 +104,7 @@ export default function About() {
 
             <div className="about-availability">
               <span aria-hidden="true" />
+
               <p>Available for freelance projects and opportunities</p>
             </div>
           </div>
@@ -182,7 +134,6 @@ export default function About() {
         <section
           className="about-editorial-section experience-section"
           aria-labelledby="experience-heading"
-          data-about-reveal
         >
           <SectionLabel id="experience-heading">Experience</SectionLabel>
 
@@ -195,8 +146,11 @@ export default function About() {
 
                 <div className="experience-content">
                   <h2>{experience.role}</h2>
+
                   <p className="experience-company">{experience.company}</p>
+
                   <p className="experience-location">{experience.location}</p>
+
                   <p className="experience-description">
                     {experience.description}
                   </p>
@@ -213,7 +167,6 @@ export default function About() {
         <section
           className="about-editorial-section capabilities-section"
           aria-labelledby="capabilities-heading"
-          data-about-reveal
         >
           <SectionLabel id="capabilities-heading">What I Do</SectionLabel>
 
@@ -234,7 +187,6 @@ export default function About() {
         <section
           className="about-editorial-section technologies-section"
           aria-labelledby="technologies-heading"
-          data-about-reveal
         >
           <SectionLabel id="technologies-heading">
             Selected Technologies
@@ -243,7 +195,10 @@ export default function About() {
           <ul className="technologies-list" aria-label="Selected technologies">
             {technologies.map((technology, index) => (
               <li key={technology}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
+                <span aria-hidden="true">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+
                 {technology}
               </li>
             ))}
@@ -253,7 +208,6 @@ export default function About() {
         <section
           className="about-editorial-section recent-work-section"
           aria-labelledby="recent-work-heading"
-          data-about-reveal
         >
           <SectionLabel id="recent-work-heading">Recent Work</SectionLabel>
 
@@ -266,6 +220,7 @@ export default function About() {
 
             <Link className="about-text-link" to="/work">
               <span>View all case studies</span>
+
               <span className="about-link-arrow" aria-hidden="true">
                 ↗
               </span>
@@ -276,7 +231,6 @@ export default function About() {
         <section
           className="about-editorial-section education-section"
           aria-labelledby="education-heading"
-          data-about-reveal
         >
           <SectionLabel id="education-heading">Education</SectionLabel>
 
@@ -284,6 +238,7 @@ export default function About() {
             <div className="education-main">
               <div>
                 <h2>Bachelor of Science in Computer Science</h2>
+
                 <p>Ahram Canadian University</p>
               </div>
 
@@ -301,11 +256,7 @@ export default function About() {
           </div>
         </section>
 
-        <section
-          className="about-cta"
-          aria-labelledby="about-cta-heading"
-          data-about-reveal
-        >
+        <section className="about-cta" aria-labelledby="about-cta-heading">
           <h2 id="about-cta-heading">
             Have an idea worth
             <br />
@@ -319,6 +270,7 @@ export default function About() {
 
           <Link className="about-cta-button" to="/contact">
             <span>Let’s work together</span>
+
             <span className="about-link-arrow" aria-hidden="true">
               ↗
             </span>
