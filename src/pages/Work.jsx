@@ -3,7 +3,7 @@ import { useState } from "react";
 const projects = [
   {
     id: "01",
-    category: "Luxury Automotive Platform",
+    category: "Automotive Platform",
     title: "P1 Motors",
     description:
       "A premium automotive platform featuring vehicle customization, service requests, quotation management, P1 Assist, and an integrated administration experience.",
